@@ -124,12 +124,12 @@ class Criptografo extends Component {
           let characters = option.text.trim().split(' ');
           let codeRef = characters[0]
           characters.splice(0, 1)
-          console.log(characters)
+          // console.log(characters)
           var docRef = option.db.collection("symmetric").doc(codeRef)
           docRef.get().then(function(doc) {
             if (doc.exists) {
-                console.log(doc.data().key)
-                console.log(characters)
+                // console.log(doc.data().key)
+                // console.log(characters)
                 let text = decodeSymmetric(characters ,doc.data().key)
                 if(text.succes){
                   var blob = new Blob([text.message], {type: "text/plain"});

@@ -34,11 +34,11 @@ function decode(cryptogram, key) {
         let m = '';
         cryptogram.forEach(char => {
             scope.c = parseInt(hexaToDecimal(char))
-            console.log(`${scope.c} decimal`)
+            // console.log(`${scope.c} decimal`)
             let x = parseInt(math.format(math.evaluate('((-6*y^3+c)/9)^(1/6)', scope), 14));
-            console.log(`${x} numerol`)
+            // console.log(`${x} numerol`)
             m += numberToCharacter(x); 
-            console.log(`${m} letra`)
+            // console.log(`${m} letra`)
         });
         return {message:m, succes:true}
     } catch (error) {
@@ -69,7 +69,7 @@ function hexaToDecimal(hexa) {
     let succes = false;
     let decimal;
     hexa = hexa.toUpperCase().replace('\n','');
-    console.log(hexa)
+    // console  .log(hexa)
     for(let i=0; i<hexa.length; i++){
         if((hexa.charCodeAt(i) >= 65 && hexa.charCodeAt(i) <= 70) || (hexa.charCodeAt(i) >= 48 && hexa.charCodeAt(i) <= 57)){
             succes = true   
