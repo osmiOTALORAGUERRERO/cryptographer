@@ -2,8 +2,9 @@
 import React, { Component } from 'react';
 import firebase from 'firebase/app';
 import {code as codeSymmetric, decode as decodeSymmetric} from './model/symmetrical.js'
-import imgSimetricoTxt from './simetrico-txt.png';
-import imgAsimetricoTxt from './asimetrico-txt.png';
+import imgSimetricoCTxt from './img/simetrico-cifrar-txt.png';
+import imgSimetricoDTxt from './img/simetrico-descifrar-txt.png';
+import imgAsimetricoTxt from './img/asimetrico-txt.png';
 const encryptionType = {
   s : 'Simetrico',
   a : 'Asimetrico'
@@ -13,9 +14,12 @@ function FieldExample(props) {
   if (props.type === 's') {
     return (
       <div className="Paper">
-        <div>Archivo.txt</div>
+        <div> <b>Archivo.txt</b> </div>
         <div>
-          <img src={imgSimetricoTxt} width='300px' height='300px'/>
+          Para encriptar un mensaje <br/>
+          <img src={imgSimetricoCTxt} /><br/><br/>
+          Para desecncriptar un mensaje<br/>
+          <img src={imgSimetricoDTxt} />
         </div>
       </div>
     )
@@ -96,7 +100,7 @@ class Criptografo extends Component {
       this.read(function(option){
         if(option.typeEncrypt === 's'){
           let code = codeSymmetric(option.text);
-          console.log(code)
+          // console.log(code)
           if(code.succes){
             option.db.collection("symmetric").add({
               key: code.key
